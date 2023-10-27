@@ -48,3 +48,14 @@ ORDER BY PUBLISHED_DATE
 
 원하는 날짜 format을 지정해줄 수도 있다.   
 ```
+FOOD_PRODUCT와 FOOD_ORDER 테이블에서 생산일자가   
+2022년 5월인 식품들의 식품 ID, 식품 이름, 총매출을 조회하는 SQL문을 작성해주세요.   
+이때 결과는 총매출을 기준으로 내림차순 정렬해주시고 총매출이 같다면 식품 ID를 기준으로 오름차순 정렬해주세요.   
+```
+SELECT O.PRODUCT_ID, P.PRODUCT_NAME, SUM(PRICE * AMOUNT) AS TOTAL_SALES
+from FOOD_PRODUCT AS P
+join FOOD_ORDER AS O on P.PRODUCT_ID = O.PRODUCT_ID
+where O.PRODUCE_DATE like '2022-05%'
+group by P.PRODUCT_ID
+order by TOTAL_SALES DESC, P.PRODUCT_ID
+```
