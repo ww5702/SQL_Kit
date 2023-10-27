@@ -39,5 +39,20 @@ YEAR, MONTH, DAY로 불러올수있다.
 ```
 where TLNO is NOT NULL
 ```
+상반기 아이스크림 총주문량이 3,000보다 높으면서   
+아이스크림의 주 성분이 과일인 아이스크림의 맛을 총주문량이   
+큰 순서대로 조회하는 SQL 문을 작성해주세요.   
+```
+SELECT a.FLAVOR
+from FIRST_HALF AS a
+LEFT JOIN ICECREAM_INFO AS b
+ON a.FLAVOR = b.FLAVOR
+where a.TOTAL_ORDER > 3000 and b.INGREDIENT_TYPE = 'fruit_based'
+order by a.TOTAL_ORDER DESC
+
+두개의 테이블이 나오게 됨으로 테이블을 합쳐줘야 하기에
+left join   on 을 이용해 합쳐준다.
+
+```
 
 
