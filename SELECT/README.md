@@ -35,6 +35,9 @@ order by PUBLISHED_DATE ASC
 DATE_FORMAT을 이용해 %Y-%m-%d을 사용해 년 월 일을 나눌수 있다.
 YEAR, MONTH, DAY로 불러올수있다.   
 ```
-
+전화번호가 NULL인 경우에는 출력대상에서 제외시켜달라
+```
+where TLNO is NOT NULL
+```
 
 
