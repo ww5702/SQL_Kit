@@ -78,3 +78,17 @@ order by R.REVIEW_DATE, R.REVIEW_TEXT
 똑같지만 where MEMBERID가 제일 많은 ID를 골라야 하니 해당 부분만
 따로 SELECT를 이용해 count를 사용하여 하나의 아이디를 반환해준다,
 ```
+천재지변으로 인해 일부 데이터가 유실되었습니다.   
+입양을 간 기록은 있는데, 보호소에 들어온 기록이 없는   
+동물의 ID와 이름을 ID 순으로 조회하는 SQL문을 작성해주세요.   
+```
+SELECT O.ANIMAL_ID, O.NAME
+from ANIMAL_OUTS as O
+left join ANIMAL_INS as I on I.ANIMAL_ID = O.ANIMAL_ID 
+where I.ANIMAL_ID is NULL
+order by O.ANIMAL_ID
+
+한쪽에는 없는 기록을 찾는거라 left join을 사용하였다.
+```
+
+
