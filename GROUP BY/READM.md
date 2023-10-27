@@ -11,3 +11,17 @@ GROUP BY A.WRITER_ID
 HAVING TOTAL_SALES >= 700000
 order by TOTAL_SALES
 ```
+REST_INFO 테이블에서 음식종류별로 즐겨찾기수가   
+가장 많은 식당의 음식 종류, ID, 식당 이름, 즐겨찾기수를   
+조회하는 SQL문을 작성해주세요.   
+이때 결과는 음식 종류를 기준으로 내림차순 정렬해주세요.   
+```
+SELECT FOOD_TYPE, REST_ID, REST_NAME, FAVORITES
+from REST_INFO
+where (FOOD_TYPE, FAVORITES)
+IN (SELECT FOOD_TYPE, MAX(FAVORITES) FROM REST_INFO GROUP BY FOOD_TYPE)
+order by FOOD_TYPE DESC
+
+먼저 where 안에 각각의 음식 종류와 즐겨찾기가 가장 많은 음식점을 골라준다
+그리고 그 데이터와 일치하는 식당만 추려서 조회한다.
+```
