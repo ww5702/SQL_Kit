@@ -36,3 +36,15 @@ order by FEE DESC, CAR_TYPE, CAR_ID DESC
 
 조건들을 하나씩 하나씩 비교하면서 정렬하면 된다
 ```
+'경제' 카테고리에 속하는 도서들의 도서 ID(BOOK_ID), 저자명(AUTHOR_NAME), 출판일(PUBLISHED_DATE)   
+리스트를 출력하는 SQL문을 작성해주세요.   
+결과는 출판일을 기준으로 오름차순 정렬해주세요.   
+```
+SELECT B.BOOK_ID, A.AUTHOR_NAME, DATE_FORMAT(B.PUBLISHED_DATE, '%Y-%m-%d') AS PUBLISHED_DATE
+FROM BOOK B
+JOIN AUTHOR A ON B.AUTHOR_ID = A.AUTHOR_ID
+WHERE CATEGORY = '경제'
+ORDER BY PUBLISHED_DATE
+
+원하는 날짜 format을 지정해줄 수도 있다.   
+```
