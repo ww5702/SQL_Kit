@@ -91,4 +91,7 @@ order by O.ANIMAL_ID
 한쪽에는 없는 기록을 찾는거라 left join을 사용하였다.
 ```
 
-
+```
+where I.DATETIME > O.DATETIME
+같은 형식의 날짜라면 이렇게 비교도 가능
+```
