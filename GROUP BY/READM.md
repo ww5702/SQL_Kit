@@ -25,3 +25,20 @@ order by FOOD_TYPE DESC
 먼저 where 안에 각각의 음식 종류와 즐겨찾기가 가장 많은 음식점을 골라준다
 그리고 그 데이터와 일치하는 식당만 추려서 조회한다.
 ```
+2022년 1월의 도서 판매 데이터를 기준으로 저자 별,   
+카테고리 별 매출액 (TOTAL_SALES = 판매량 * 판매가) 을 구하여,   
+저자 ID, 저자명, 카테고리, 매출액 리스트를 출력하는 SQL문을 작성해주세요.   
+결과는 저자 ID를 오름차순으로, 저자 ID가 같다면 카테고리를 내림차순 정렬해주세요.   
+```
+SELECT A.AUTHOR_ID, AUTHOR_NAME, CATEGORY, SUM((SALES * PRICE)) AS TOTAL_SALES
+FROM BOOK_SALES as s
+JOIN BOOK B on S.BOOK_ID = B.BOOK_ID
+JOIN AUTHOR A ON B.AUTHOR_ID = A.AUTHOR_ID
+where YEAR(S.SALES_DATE) = 2022 AND MONTH(S.SALES_DATE) = 01
+group by CATEGORY, AUTHOR_ID
+order by AUTHOR_ID, CATEGORY DESC
+
+BOOK_SALES에 BOOK, AUTHOR 테이블을 통합시켜주고
+SALES_DATE의 값을 선별해준다.
+
+```
