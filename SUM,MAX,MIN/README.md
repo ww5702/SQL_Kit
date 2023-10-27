@@ -34,3 +34,23 @@ where NAME is NOT NULL
 
 중복 제거를 먼저 한 후 카운팅을 해줘야한다.
 ```
+USED_GOODS_BOARD 테이블에서 2022년 10월 5일에 등록된   
+중고거래 게시물의 게시글 ID, 작성자 ID, 게시글 제목, 가격, 거래상태를   
+조회하는 SQL문을 작성해주세요.   
+거래상태가 SALE 이면 판매중, RESERVED이면 예약중,  
+DONE이면 거래완료 분류하여 출력해주시고,   
+결과는 게시글 ID를 기준으로 내림차순 정렬해주세요.   
+```
+SELECT BOARD_ID, WRITER_ID, TITLE, PRICE, CASE
+WHEN STATUS = 'SALE' THEN '판매중'
+WHEN STATUS = 'RESERVED' THEN '예약중'
+WHEN STATUS = 'DONE' THEN '거래완료'
+END AS STATUS
+from USED_GOODS_BOARD
+where CREATED_DATE LIKE '2022-10-05'
+order by BOARD_ID DESC
+
+when a = '22' then 'aa' 와같이 if문 사용가능
+end 를 무조건 붙여야한다.
+```
+
